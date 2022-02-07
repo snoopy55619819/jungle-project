@@ -4,8 +4,6 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
-
-
     <div class="panel panel-default items">
       <table class="table table-bordered">
         <thead>
@@ -16,11 +14,17 @@
             <th>Price</th>
           </tr>
         </thead>
+
         <tbody>
         <% @order.line_items.each do |item| %>
-          <%= render 'line_item', product_id: item[:product_id], quantity: item[:quantity].to_i %>
+          <%= render 'line_item', 
+            product_id: item[:product_id], 
+            quantity: item[:quantity].to_i, 
+            product: item.product 
+          %>
         <% end %>
         </tbody>
+
         <tfoot>
           <tr>
             <th colspan="4">
